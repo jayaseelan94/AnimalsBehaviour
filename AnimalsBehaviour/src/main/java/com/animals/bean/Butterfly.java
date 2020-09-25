@@ -6,7 +6,7 @@ import com.animals.interfaces.Flyable;
 import com.animals.interfaces.Speakable;
 import com.animals.utils.Constants;
 
-public class Butterfly extends Insect {
+public class Butterfly extends Insect implements Flyable {
 	private Insect state = new caterpillarState(new SingHelper(SoundEnums.CATERPILLAR));
 
     public Butterfly() {

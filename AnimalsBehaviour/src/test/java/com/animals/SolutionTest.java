@@ -11,6 +11,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.animals.bean.Animal;
+import com.animals.bean.AnimalCount;
 import com.animals.bean.Bird;
 import com.animals.bean.Butterfly;
 import com.animals.bean.Chicken;
@@ -23,6 +25,7 @@ import com.animals.enums.Gender;
 import com.animals.enums.SoundEnums;
 import com.animals.helper.SingHelper;
 import com.animals.bean.Dog;
+import com.animals.bean.Dolphin;
 import com.animals.bean.Cat;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -139,6 +142,32 @@ public class SolutionTest {
 	        assertThat(outContent.toString(), containsString("I eat fish"));
 	        new Clownfish().makeJoke();
 	        assertThat(outContent.toString(), containsString("I make jokes"));
+	    }
+	    
+	    @Test
+	    void CountingAnimals() {
+
+	        Animal[] animals = new Animal[]{
+	                new Bird(),
+	                new Duck(),
+	                new Chicken(),
+	                new Parrot(),
+	                new Fish(),
+	                new Shark(),
+	                new Clownfish(),
+	                new Dolphin(),
+	                new Dog(),
+	                new Butterfly(),
+	                new Cat()
+	        };
+	        AnimalCount animalCount = new AnimalCount(animals);
+
+	        assertEquals(animalCount.flyingAnimal, 1);
+	        assertEquals(animalCount.walkingAnimal, 5);
+	        assertEquals(animalCount.speakingAnimal, 2);
+	        assertEquals(animalCount.swimingAnimal, 5);
+
+
 	    }
 	   
 }

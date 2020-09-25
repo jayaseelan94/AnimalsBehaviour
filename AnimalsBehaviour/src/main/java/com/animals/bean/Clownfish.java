@@ -7,6 +7,8 @@ public class Clownfish extends Fish {
     public String bodySize() {
         return Constants.S_SIZE;
     }
+	
+	void Clownfish() {};
 
     @Override
     public String bodyColor() {

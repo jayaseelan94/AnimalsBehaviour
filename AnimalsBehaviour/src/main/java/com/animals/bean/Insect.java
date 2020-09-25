@@ -6,7 +6,7 @@ import com.animals.interfaces.Speakable;
 import com.animals.interfaces.Walkable;
 import com.animals.utils.Constants;
 
-public class Insect implements Flyable {
+public class Insect extends Animal implements Flyable {
 	
 	private SingHelper singHelper;
 
