@@ -11,8 +11,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.animals.bean.Animal;
 import com.animals.bean.Bird;
+import com.animals.bean.Duck;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.StringContains.containsString;
@@ -24,7 +24,9 @@ public class SolutionTest {
 	  private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 	  private final PrintStream originalOut = System.out;
 	  
-	  
+	  protected enum Sex {MALE,FEMALE};
+	  protected Sex sex;
+	
 	  @BeforeAll
 	    public static void setUp() {
 	        System.out.println("@BeforAll - Executes");
@@ -43,9 +45,6 @@ public class SolutionTest {
 
 	    @Test
 	    void walk() {
-	        new Animal().walk();
-	        assertThat(outContent.toString(), containsString("I am walking"));
-
 	        new Bird().walk();
 	        assertThat(outContent.toString(), containsString("I am walking"));
 	    }
@@ -53,12 +52,18 @@ public class SolutionTest {
 	    @Test
 	    void fly() {
 	        new Bird().fly();
-	        assertThat(outContent.toString(), containsString("I am singing"));
+	        assertThat(outContent.toString(), containsString("I am flying"));
+	        new Duck().fly();
+	        assertThat(outContent.toString(), containsString("I am flying"));
 	    }
 
 	    @Test
 	    void sing() {
-	        new Bird().sing();
+	        new Bird().makeSound("I am singing");
 	        assertThat(outContent.toString(), containsString("I am singing"));
+	        new Duck().makeSound("Quack, quack");
+	        assertThat(outContent.toString(), containsString("Quack, quack"));
+	        
 	    }
+	    
 }
