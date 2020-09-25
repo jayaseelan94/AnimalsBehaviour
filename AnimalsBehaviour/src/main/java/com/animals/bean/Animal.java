@@ -1,14 +1,15 @@
 package com.animals.bean;
 
+import com.animals.enums.Gender;
+
 public abstract class Animal {
-	protected enum Sex {MALE,FEMALE};
-	protected Sex sex;
+	protected Gender sex;
 	
-	public void setSex(Sex sex){
+	public void setSex(Gender sex){
 		this.sex = sex;
 	}
 	
-	public Sex getSex(){
+	public Gender getSex(){
 		return sex;
 	}
 	
