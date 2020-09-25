@@ -165,10 +165,10 @@ public class SolutionTest {
 	        };
 	        AnimalCount animalCount = new AnimalCount(animals);
 
-	        assertEquals(animalCount.getFlyingAnimal(), 1);
-	        assertEquals(animalCount.getWalkingAnimal(), 5);
-	        assertEquals(animalCount.getSpeakingAnimal(), 2);
-	        assertEquals(animalCount.getSwimingAnimal(), 5);
+	        assertEquals(animalCount.getFlyingAnimal(), 6);
+	        assertEquals(animalCount.getWalkingAnimal(), 9);
+	        assertEquals(animalCount.getSpeakingAnimal(), 9);
+	        assertEquals(animalCount.getSwimingAnimal(), 6);
 
 
 	    }

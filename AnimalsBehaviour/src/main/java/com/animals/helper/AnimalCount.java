@@ -1,5 +1,8 @@
 package com.animals.helper;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.animals.bean.Animal;
 import com.animals.interfaces.Flyable;
 import com.animals.interfaces.Speakable;
@@ -12,6 +15,8 @@ public class AnimalCount {
     int walkingAnimal = 0;
     int speakingAnimal = 0;
     int swimingAnimal = 0;
+    
+    Map<String,Integer> actionsCount = new HashMap<String,Integer>();
 
 
     public AnimalCount(Animal[] animals) {
@@ -32,6 +37,11 @@ public class AnimalCount {
             }
             System.out.println("flyingAnimal:"+flyingAnimal);
         }
+        
+        actionsCount.put("flyingAnimal", flyingAnimal);
+        actionsCount.put("walkingAnimal", walkingAnimal);
+        actionsCount.put("speakingAnimal", speakingAnimal);
+        actionsCount.put("swimingAnimal", swimingAnimal);
     }
 
     public int getFlyingAnimal() {
@@ -65,5 +75,13 @@ public class AnimalCount {
     public void setSwimingAnimal(int swimingAnimal) {
         this.swimingAnimal = swimingAnimal;
     }
+
+	public Map<String, Integer> getActionsCount() {
+		return actionsCount;
+	}
+
+	public void setActionsCount(Map<String, Integer> actionsCount) {
+		this.actionsCount = actionsCount;
+	}
 
 }
