@@ -21,7 +21,7 @@ E. Counting animals - (DONE)
 
 BONUS - Multiple voice for the Rooster - (DONE)
 
-2.	Can you design a RESTful API for querying these animals? - (DONE) 
+2.Can you design a RESTful API for querying these animals? - (DONE) 
 
 
   
