@@ -12,7 +12,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.animals.bean.Animal;
-import com.animals.bean.AnimalCount;
 import com.animals.bean.Bird;
 import com.animals.bean.Butterfly;
 import com.animals.bean.Chicken;
@@ -22,7 +21,9 @@ import com.animals.bean.Fish;
 import com.animals.bean.Parrot;
 import com.animals.bean.Shark;
 import com.animals.enums.Gender;
+import com.animals.enums.LanguageEnums;
 import com.animals.enums.SoundEnums;
+import com.animals.helper.AnimalCount;
 import com.animals.helper.SingHelper;
 import com.animals.bean.Dog;
 import com.animals.bean.Dolphin;
@@ -96,6 +97,8 @@ public class SolutionTest {
 	        new Chicken().setSex(Gender.MALE);
 	        new Chicken().canSpeak();
 	        assertThat(outContent.toString(), containsString("Cock-a-doodle-doo"));
+	        new Chicken(LanguageEnums.DANISH).makeSound();
+	        assertThat(outContent.toString(), containsString("kykyliky"));
 	        
 	        new Dog(new SingHelper(SoundEnums.DOG)).canSpeak();
 	        assertThat(outContent.toString(), containsString("Woof, woof"));
@@ -162,10 +165,10 @@ public class SolutionTest {
 	        };
 	        AnimalCount animalCount = new AnimalCount(animals);
 
-	        assertEquals(animalCount.flyingAnimal, 1);
-	        assertEquals(animalCount.walkingAnimal, 5);
-	        assertEquals(animalCount.speakingAnimal, 2);
-	        assertEquals(animalCount.swimingAnimal, 5);
+	        assertEquals(animalCount.getFlyingAnimal(), 1);
+	        assertEquals(animalCount.getWalkingAnimal(), 5);
+	        assertEquals(animalCount.getSpeakingAnimal(), 2);
+	        assertEquals(animalCount.getSwimingAnimal(), 5);
 
 
 	    }

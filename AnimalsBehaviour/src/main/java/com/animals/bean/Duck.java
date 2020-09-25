@@ -13,12 +13,12 @@ public class Duck extends Bird implements Swimmable,Speakable{
         System.out.println(Constants.I_AM_SWIMMING);
     }
     
-    public Duck() {
-        super(new SingHelper(SoundEnums.DUCK));
-    }
-    
     public void canSpeak() {
         System.out.println(SoundEnums.DUCK);
+    }
+    
+    public Duck() {
+        super(new SingHelper(SoundEnums.DUCK));
     }
     
 }
