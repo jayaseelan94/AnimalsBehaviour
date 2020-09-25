@@ -12,9 +12,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.animals.bean.Bird;
+import com.animals.bean.Butterfly;
 import com.animals.bean.Chicken;
+import com.animals.bean.Clownfish;
 import com.animals.bean.Duck;
+import com.animals.bean.Fish;
 import com.animals.bean.Parrot;
+import com.animals.bean.Shark;
 import com.animals.enums.Gender;
 import com.animals.enums.SoundEnums;
 import com.animals.helper.SingHelper;
@@ -23,6 +27,7 @@ import com.animals.bean.Cat;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.StringContains.containsString;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 public class SolutionTest {
@@ -32,7 +37,7 @@ public class SolutionTest {
 	  private final PrintStream originalOut = System.out;
 	  
 	  
-  	
+	
 	  @BeforeAll
 	    public static void setUp() {
 	        System.out.println("@BeforAll - Executes");
@@ -61,6 +66,13 @@ public class SolutionTest {
 	        assertThat(outContent.toString(), containsString("I am flying"));
 	        new Duck().fly();
 	        assertThat(outContent.toString(), containsString("I am flying"));
+	        
+	        new Butterfly().fly();
+	        assertThat(outContent.toString(), containsString("I cant Fly"));
+	        new Butterfly().transform();
+
+	        new Butterfly().fly();
+	        assertThat(outContent.toString(), containsString("flying"));
 	    }
 
 	    @Test
@@ -86,7 +98,8 @@ public class SolutionTest {
 	        assertThat(outContent.toString(), containsString("Woof, woof"));
 	        new Cat(new SingHelper(SoundEnums.CAT)).canSpeak();
 	        assertThat(outContent.toString(), containsString("Meow"));
-
+	        
+	        //Parrot
 	        new Parrot().makeSound();
 	        assertThat(outContent.toString(), containsString("I am singing"));
 	        new Parrot(new SingHelper(SoundEnums.DOG)).makeSound();
@@ -96,7 +109,36 @@ public class SolutionTest {
 	        new Parrot(new SingHelper(SoundEnums.ROOSTER)).makeSound();
 	        assertThat(outContent.toString(), containsString("Cock-a-doodle-doo"));
 	        
+	        //Butterfly
+	        new Butterfly().canSpeak();
+	        assertThat(outContent.toString(), containsString("caterpillar"));
+	        new Butterfly().transform();
+	        new Butterfly().canSpeak();
+	        assertThat(outContent.toString(), containsString(""));
+	        
 	    }
 	    
+	    @Test
+	    void bodyColor() {
+	        assertEquals(new Fish().bodyColor(), null);
+	        assertEquals(new Shark().bodyColor(), "grey");
+	        assertEquals(new Clownfish().bodyColor(), "orange");
+
+	    }
+	    
+	    @Test
+	    void bodySize() {
+	        assertEquals(new Fish().bodySize(), null);
+	        assertEquals(new Shark().bodySize(), "large");
+	        assertEquals(new Clownfish().bodySize(), "small");
+	    }
+	    
+	    @Test
+	    void extraFishTest() {
+	        new Shark().canEat();
+	        assertThat(outContent.toString(), containsString("I eat fish"));
+	        new Clownfish().makeJoke();
+	        assertThat(outContent.toString(), containsString("I make jokes"));
+	    }
 	   
 }

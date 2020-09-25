@@ -21,4 +21,5 @@ public class Duck extends Bird implements Swimmable,Speakable{
         System.out.println(SoundEnums.DUCK);
     }
     
+    
 }
